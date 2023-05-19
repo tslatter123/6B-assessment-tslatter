@@ -12,10 +12,10 @@ namespace SixBAssessmentTSlatter.Client.ViewModels
         public string Name { get; set; }
 
         [Required]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         [Required]
-        public DayFlexibilityEnum DayFlexibility { get; set; }
+        public DayFlexibilityEnum Flexibility { get; set; }
 
         [Required]
         public VehicleSizeEnum VehicleSize { get; set; }

@@ -18,7 +18,7 @@ namespace SixBAssessmentTSlatter.Client.ViewModels
         public VehicleSizeEnum VehicleSize { get; set; }
 
         [Required]
-        public string ContacyNumber { get; set; }
+        public string ContactNumber { get; set; }
 
         [Required]
         public string Email { get; set; }
