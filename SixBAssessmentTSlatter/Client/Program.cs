@@ -6,6 +6,7 @@ using SixBAssessmentTSlatter.Client.Interfaces.Services;
 using SixBAssessmentTSlatter.Client.Interfaces.Mappers;
 using SixBAssessmentTSlatter.Client.Mappers;
 using SixBAssessmentTSlatter.Client.Services;
+using SixBAssessmentTSlatter.Shared.Enums;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddHttpClient("SixBAssessmentTSlatter.ServerAPI", client => cli
     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
 builder.Services.AddSingleton<IBookingService, BookingService>();
+builder.Services.AddSingleton<IEnumService<DayFlexibilityEnum>, EnumService<DayFlexibilityEnum>>();
+builder.Services.AddSingleton<IEnumService<VehicleSizeEnum>, EnumService<VehicleSizeEnum>>();
 
 builder.Services.AddSingleton<IBookingMapper, BookingMapper>();
 
