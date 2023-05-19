@@ -54,5 +54,29 @@ namespace SixBAssessmentTSlatter.Client.Services
                 throw new SystemException($"{Convert.ToInt32(result.StatusCode)}: {result.StatusCode}");
             }
         }
+
+        public async Task<Booking> EditBooking(BookingViewModel viewModel)
+        {
+            Booking booking = _bookingMapper.Map(viewModel);
+            var client = _clientFactory.CreateClient("private");
+            var result = await client.PostAsJsonAsync("api/Bookings", booking);
+
+            if (!result.IsSuccessStatusCode)
+            {
+                throw new Exception($"{Convert.ToInt32(result.StatusCode)}: {result.StatusCode}");
+            }
+
+            return booking;
+        }
+
+        public async Task ApproveBooking(BookingViewModel viewModel)
+        {
+            if (!viewModel.IsApproved)
+            {
+                viewModel.IsApproved = true;
+            }
+
+            await EditBooking(viewModel);
+        }
     }
 }

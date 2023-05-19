@@ -40,13 +40,13 @@ else
                     <td>@booking.ContactNumber</td>
                     <td>@booking.Email</td>
 
-                    @*<td>
-            @if (!booking.IsApproved)
-            {
-            <button class="btn btn-dark" @onclick="(() => ApproveBooking(booking.ID))">Approve</button>
-            }
-            </td>
-            <td><button class="btn btn-dark" @onclick="(() => EditBooking(booking.ID))">Edit</button></td>
+                    <td>
+                        @if (!booking.IsApproved)
+                        {
+                            <button class="btn btn-dark" @onclick="(() => ApproveBooking(booking.ID))">Approve</button>
+                        }
+                    </td>
+                    @*<td><button class="btn btn-dark" @onclick="(() => EditBooking(booking.ID))">Edit</button></td>
             <td><button class="btn btn-danger" @onclick="(() => DeleteBooking(booking.ID))">Delete</button></td>*@
                 </tr>
             }
@@ -67,18 +67,18 @@ else
         _navigationManager.NavigateTo("/AddBooking");
     }
 
-    //protected async Task ApproveBooking(string id)
-    //{
-    //    if (bookings != null)
-    //    {
-    //        var booking = bookings.SingleOrDefault(x => x.ID == id);
-    //        if (booking != null)
-    //        {
-    //            await _bookingService.ApproveBooking(booking);
-    //            await this.OnInitializedAsync();
-    //        }
-    //    }
-    //}
+    protected async Task ApproveBooking(string id)
+    {
+        if (bookings != null)
+        {
+            var booking = bookings.SingleOrDefault(x => x.ID == id);
+            if (booking != null)
+            {
+                await _bookingService.ApproveBooking(booking);
+                await this.OnInitializedAsync();
+            }
+        }
+    }
 
     //protected void EditBooking(string id)
     //{
