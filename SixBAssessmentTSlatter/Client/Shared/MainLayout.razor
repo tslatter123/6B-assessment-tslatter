@@ -16,3 +16,12 @@
         </article>
     </main>
 </div>
+
+@code {
+    ErrorBoundary errorBoundary;
+
+    protected override void OnParametersSet()
+    {
+        errorBoundary?.Recover();
+    }
+}
