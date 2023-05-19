@@ -8,7 +8,6 @@
     <main>
         <div class="top-row px-4 auth">
             <LoginDisplay />
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
         </div>
 
         <article class="content px-4">
@@ -22,10 +21,10 @@
                     </div>
                     <AuthorizeView>
                         <Authorized>
-
+                            <NavLink class="nav-link" href="/Bookings">Go to Bookings</NavLink>
                         </Authorized>
                         <NotAuthorized>
-
+                            <NavLink class="nav-link" href="/">Go to Home</NavLink>
                         </NotAuthorized>
                     </AuthorizeView>
                 </ErrorContent>
