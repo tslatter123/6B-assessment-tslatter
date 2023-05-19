@@ -1,5 +1,5 @@
+using BlazorPracticeApp.Server.Data;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using SixBAssessmentTSlatter.Server.Data;
 using SixBAssessmentTSlatter.Server.Models;
@@ -24,7 +24,21 @@ builder.Services.AddAuthentication()
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+builder.Services.AddTransient<SeedData>();
+
 var app = builder.Build();
+
+await SeedData(app);
+
+async Task SeedData(IHost app)
+{
+    var scopeFactory = app.Services.GetService<IServiceScopeFactory>();
+    using (var scope = scopeFactory.CreateScope())
+    {
+        var service = scope.ServiceProvider.GetService<SeedData>();
+        await service.RunSeed();
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

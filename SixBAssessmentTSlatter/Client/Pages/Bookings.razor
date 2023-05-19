@@ -37,18 +37,57 @@ else
                     <td>@booking.Date.ToShortDateString()</td>
                     <td>@_dayFlexibilityEnumService.GetDescription(booking.Flexibility)</td>
                     <td>@_vehicleSizeEnumService.GetDescription(booking.VehicleSize)</td>
-                    <td>@booking.ContactNum</td>
+                    <td>@booking.ContactNumber</td>
                     <td>@booking.Email</td>
-                    <td>
-                        @if (!booking.IsApproved)
-                        {
-                            <button class="btn btn-dark" @onclick="(() => ApproveBooking(booking.ID))">Approve</button>
-                        }
-                    </td>
-                    <td><button class="btn btn-dark" @onclick="(() => EditBooking(booking.ID))">Edit</button></td>
-                    <td><button class="btn btn-danger" @onclick="(() => DeleteBooking(booking.ID))">Delete</button></td>
+
+                    @*<td>
+            @if (!booking.IsApproved)
+            {
+            <button class="btn btn-dark" @onclick="(() => ApproveBooking(booking.ID))">Approve</button>
+            }
+            </td>
+            <td><button class="btn btn-dark" @onclick="(() => EditBooking(booking.ID))">Edit</button></td>
+            <td><button class="btn btn-danger" @onclick="(() => DeleteBooking(booking.ID))">Delete</button></td>*@
                 </tr>
             }
         </tbody>
     </table>
+}
+
+@code {
+    private IEnumerable<BookingViewModel>? bookings = Enumerable.Empty<BookingViewModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        bookings = await _bookingService.GetAllBookings();
+    }
+
+    protected void AddBooking()
+    {
+        _navigationManager.NavigateTo("/AddNewBooking");
+    }
+
+    //protected async Task ApproveBooking(string id)
+    //{
+    //    if (bookings != null)
+    //    {
+    //        var booking = bookings.SingleOrDefault(x => x.ID == id);
+    //        if (booking != null)
+    //        {
+    //            await _bookingService.ApproveBooking(booking);
+    //            await this.OnInitializedAsync();
+    //        }
+    //    }
+    //}
+
+    //protected void EditBooking(string id)
+    //{
+    //    _navigationManager.NavigateTo($"/EditBooking/{id}");
+    //}
+
+    //protected async Task DeleteBooking(string id)
+    //{
+    //    await _bookingService.DeleteBooking(id);
+    //    await this.OnInitializedAsync();
+    //}
 }
