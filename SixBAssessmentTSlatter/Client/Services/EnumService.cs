@@ -1,4 +1,5 @@
 ﻿using SixBAssessmentTSlatter.Client.Interfaces.Services;
+using SixBAssessmentTSlatter.Client.ViewModels;
 using System.ComponentModel;
 using System.Reflection;
 
@@ -6,11 +7,17 @@ namespace SixBAssessmentTSlatter.Client.Services
 {
     public class EnumService<TEnum> : IEnumService<TEnum> where TEnum : Enum
     {
+        public IEnumerable<SelectListItem> GetSelectList(TEnum? value)
+        {
+            return Enum.GetValues(typeof(TEnum)).Cast<TEnum>()
+                .Select(x => new SelectListItem(x.ToString(), GetDescription(x), CheckValuesMatch(value, x)));
+        }
+
         public string GetDescription(TEnum value)
         {
             FieldInfo? field = GetFieldInfo(value);
 
-            if(field == null)
+            if (field == null)
             {
                 return value.ToString();
             }
