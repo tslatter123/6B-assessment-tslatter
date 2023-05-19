@@ -12,13 +12,22 @@
         </div>
 
         <article class="content px-4">
-            @Body
+            <CustomErrorBoundary @ref="errorBoundary" Context="Exception">
+                <ChildContent>
+                    @Body
+                </ChildContent>
+                <ErrorContent>
+                    <div class="alert bg-danger text-white alert-dismissible">
+                        @Exception.Message
+                    </div>
+                </ErrorContent>
+            </CustomErrorBoundary>
         </article>
     </main>
 </div>
 
 @code {
-    ErrorBoundary errorBoundary;
+    ErrorBoundary? errorBoundary;
 
     protected override void OnParametersSet()
     {
