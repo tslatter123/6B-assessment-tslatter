@@ -2,13 +2,11 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using SixBAssessmentTSlatter.Client;
-using SixBAssessmentTSlatter.Client.Interfaces.Services;
 using SixBAssessmentTSlatter.Client.Interfaces.Mappers;
+using SixBAssessmentTSlatter.Client.Interfaces.Services;
 using SixBAssessmentTSlatter.Client.Mappers;
 using SixBAssessmentTSlatter.Client.Services;
 using SixBAssessmentTSlatter.Shared.Enums;
-using BlazorPracticeApp.Shared.Interfaces.Mappers;
-using BlazorPracticeApp.Shared.Mappers;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -24,7 +22,7 @@ builder.Services.AddSingleton<IEnumService<DayFlexibilityEnum>, EnumService<DayF
 builder.Services.AddSingleton<IEnumService<VehicleSizeEnum>, EnumService<VehicleSizeEnum>>();
 
 builder.Services.AddSingleton<IBookingMapper, BookingMapper>();
-builder.Services.AddSingleton<IBookingViewModelMapper, BookingViewModelMapper>();
+builder.Services.AddSingleton<SixBAssessmentTSlatter.Shared.Interfaces.Mappers.IBookingViewModelMapper, BookingViewModelMapper>();
 
 // Supply HttpClient instances that include access tokens when making requests to the server project
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("SixBAssessmentTSlatter.ServerAPI"));

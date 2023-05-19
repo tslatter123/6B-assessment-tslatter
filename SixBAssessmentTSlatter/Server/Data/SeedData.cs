@@ -1,7 +1,7 @@
 ﻿using SixBAssessmentTSlatter.Server.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace BlazorPracticeApp.Server.Data
+namespace SixBAssessmentTSlatter.Server.Data
 {
     public class SeedData
     {

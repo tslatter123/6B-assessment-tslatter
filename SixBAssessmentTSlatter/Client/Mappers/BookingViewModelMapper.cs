@@ -1,8 +1,8 @@
-﻿using BlazorPracticeApp.Shared.Interfaces.Mappers;
+﻿using SixBAssessmentTSlatter.Shared.Interfaces.Mappers;
 using SixBAssessmentTSlatter.Client.ViewModels;
 using SixBAssessmentTSlatter.Shared.Models;
 
-namespace BlazorPracticeApp.Shared.Mappers
+namespace SixBAssessmentTSlatter.Client.Mappers
 {
     public class BookingViewModelMapper : IBookingViewModelMapper
     {

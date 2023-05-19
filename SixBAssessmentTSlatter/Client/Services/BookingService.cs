@@ -1,7 +1,7 @@
-﻿using BlazorPracticeApp.Shared.Interfaces.Mappers;
-using SixBAssessmentTSlatter.Client.Interfaces.Mappers;
+﻿using SixBAssessmentTSlatter.Client.Interfaces.Mappers;
 using SixBAssessmentTSlatter.Client.Interfaces.Services;
 using SixBAssessmentTSlatter.Client.ViewModels;
+using SixBAssessmentTSlatter.Shared.Interfaces.Mappers;
 using SixBAssessmentTSlatter.Shared.Models;
 using System.Net.Http.Json;
 
