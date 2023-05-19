@@ -78,5 +78,16 @@ namespace SixBAssessmentTSlatter.Client.Services
 
             await EditBooking(viewModel);
         }
+
+        public async Task DeleteBooking(string id)
+        {
+            var client = _clientFactory.CreateClient("private");
+            var result = await client.DeleteAsync($"api/Bookings?id={id}");
+
+            if (!result.IsSuccessStatusCode)
+            {
+                throw new Exception($"{Convert.ToInt32(result.StatusCode)}: {result.StatusCode}");
+            }
+        }
     }
 }

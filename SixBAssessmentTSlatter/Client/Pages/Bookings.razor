@@ -46,8 +46,8 @@ else
                             <button class="btn btn-dark" @onclick="(() => ApproveBooking(booking.ID))">Approve</button>
                         }
                     </td>
-                    @*<td><button class="btn btn-dark" @onclick="(() => EditBooking(booking.ID))">Edit</button></td>
-            <td><button class="btn btn-danger" @onclick="(() => DeleteBooking(booking.ID))">Delete</button></td>*@
+                    @*<td><button class="btn btn-dark" @onclick="(() => EditBooking(booking.ID))">Edit</button></td>*@
+                    <td><button class="btn btn-danger" @onclick="(() => DeleteBooking(booking.ID))">Delete</button></td>
                 </tr>
             }
         </tbody>
@@ -85,9 +85,9 @@ else
     //    _navigationManager.NavigateTo($"/EditBooking/{id}");
     //}
 
-    //protected async Task DeleteBooking(string id)
-    //{
-    //    await _bookingService.DeleteBooking(id);
-    //    await this.OnInitializedAsync();
-    //}
+    protected async Task DeleteBooking(string id)
+    {
+        await _bookingService.DeleteBooking(id);
+        await this.OnInitializedAsync();
+    }
 }

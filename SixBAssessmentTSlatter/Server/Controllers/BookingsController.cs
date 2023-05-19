@@ -39,5 +39,29 @@ namespace SixBAssessmentTSlatter.Server.Controllers
                 throw;
             }
         }
+
+        [Authorize]
+        [HttpDelete]
+        public async Task<ActionResult> DeleteBooking(string id)
+        {
+            try
+            {
+                var booking = await _context.Bookings.SingleOrDefaultAsync(x => x.Id == id);
+
+                if (booking == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Remove(booking);
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

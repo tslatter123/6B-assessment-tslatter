@@ -9,5 +9,6 @@ namespace SixBAssessmentTSlatter.Client.Interfaces.Services
         public abstract Task AddBooking(AddBookingViewModel viewModel);
         public abstract Task<Booking> EditBooking(BookingViewModel viewModel);
         public abstract Task ApproveBooking(BookingViewModel viewModel);
+        public abstract Task DeleteBooking(string id);
     }
 }
