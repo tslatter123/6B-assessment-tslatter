@@ -20,6 +20,14 @@
                     <div class="alert bg-danger text-white alert-dismissible">
                         @Exception.Message
                     </div>
+                    <AuthorizeView>
+                        <Authorized>
+
+                        </Authorized>
+                        <NotAuthorized>
+
+                        </NotAuthorized>
+                    </AuthorizeView>
                 </ErrorContent>
             </CustomErrorBoundary>
         </article>
