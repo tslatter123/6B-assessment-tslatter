@@ -1,0 +1,22 @@
+﻿@page "/AddBooking"
+@inject IBookingService _bookingService
+@inject IEnumService<DayFlexibilityEnum> _flexibilityEnumService
+@inject IEnumService<VehicleSizeEnum> _flexibilityEnumService
+@inject NavigationManager _navigationManager
+
+<h3>AddBooking</h3>
+
+@code {
+    AddBookingViewModel booking = new AddBookingViewModel();
+
+    protected void GoToHome()
+    {
+        _navigationManager.NavigateTo("/");
+    }
+
+    protected async Task ConfirmAddBooking()
+    {
+        await _bookingService.AddBooking(booking);
+        GoToHome();
+    }
+}
