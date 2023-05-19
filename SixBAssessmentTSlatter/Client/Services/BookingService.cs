@@ -1,4 +1,4 @@
-﻿using SixBAssessmentTSlatter.Client.Interfaces;
+﻿using SixBAssessmentTSlatter.Client.Interfaces.Services;
 
 namespace SixBAssessmentTSlatter.Client.Services
 {

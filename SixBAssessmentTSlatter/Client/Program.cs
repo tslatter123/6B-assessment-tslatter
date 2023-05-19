@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using SixBAssessmentTSlatter.Client;
-using SixBAssessmentTSlatter.Client.Interfaces;
+using SixBAssessmentTSlatter.Client.Interfaces.Services;
 using SixBAssessmentTSlatter.Client.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
