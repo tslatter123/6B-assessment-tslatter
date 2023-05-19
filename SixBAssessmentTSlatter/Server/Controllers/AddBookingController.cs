@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SixBAssessmentTSlatter.Server.Data;
 using SixBAssessmentTSlatter.Shared.Models;
 
 namespace SixBAssessmentTSlatter.Server.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class AddBookingController : ControllerBase
