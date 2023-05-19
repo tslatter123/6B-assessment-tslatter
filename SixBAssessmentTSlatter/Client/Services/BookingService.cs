@@ -4,5 +4,6 @@ namespace SixBAssessmentTSlatter.Client.Services
 {
     public class BookingService : IBookingService
     {
+        
     }
 }
