@@ -1,20 +1,77 @@
 ﻿@page "/AddBooking"
 @inject IBookingService _bookingService
 @inject IEnumService<DayFlexibilityEnum> _flexibilityEnumService
-@inject IEnumService<VehicleSizeEnum> _flexibilityEnumService
+@inject IEnumService<VehicleSizeEnum> _vehicleSizeEnumService
 @inject NavigationManager _navigationManager
 
-<h3>AddBooking</h3>
+<h3>Add Booking</h3>
+
+<EditForm Model="booking" OnValidSubmit="ConfirmAddBooking">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label for="name">Name</label>
+        <InputText id="name" @bind-Value="booking.Name" class="form-control" />
+    </div>
+    <div>
+        <label for="date">Date</label>
+        <InputDate id="date" @bind-Value="booking.Date" class="form-control" />
+    </div>
+    <div>
+        <label for="flexibility">Flexibility</label>
+        <InputSelect id="flexibility" @bind-Value="booking.Flexibility" class="form-control">
+            @foreach (var selectItem in _flexibilityEnumService.GetSelectList(booking.Flexibility))
+            {
+                if (selectItem.IsSelected)
+                {
+                    <option value="@selectItem.Value" selected>@selectItem.DisplayText</option>
+                }
+                else
+                {
+                    <option value="@selectItem.Value">@selectItem.DisplayText</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label for="vehicle-size">Vehicle Size</label>
+        <InputSelect id="vehicle-size" @bind-Value="booking.VehicleSize" class="form-control">
+            @foreach (var selectItem in _vehicleSizeEnumService.GetSelectList(booking.VehicleSize))
+            {
+                if (selectItem.IsSelected)
+                {
+                    <option value="@selectItem.Value" selected>@selectItem.DisplayText</option>
+                }
+                else
+                {
+                    <option value="@selectItem.Value">@selectItem.DisplayText</option>
+                }
+            }
+        </InputSelect>
+    </div>
+    <div>
+        <label for="contact-number">Contact Number</label>
+        <InputText id="contact-number" type="tel" @bind-Value="booking.ContactNumber" class="form-control" pattern="[0-9]{11}" />
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <InputText id="email" type="email" @bind-Value="booking.Email" class="form-control" />
+    </div>
+    <div>
+        <button type="submit" class="btn btn-dark">Add</button>
+        <button type="button" @onclick="GoToHome" class="btn btn-light">Cancel</button>
+    </div>
+</EditForm>
 
 @code {
     AddBookingViewModel booking = new AddBookingViewModel();
 
-    protected void GoToHome()
+    private void GoToHome()
     {
         _navigationManager.NavigateTo("/");
     }
 
-    protected async Task ConfirmAddBooking()
+    private async Task ConfirmAddBooking()
     {
         await _bookingService.AddBooking(booking);
         GoToHome();

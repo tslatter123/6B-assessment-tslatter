@@ -12,7 +12,7 @@ namespace SixBAssessmentTSlatter.Shared.Enums
         [Description("+/- 1 Day")]
         OneDay = 0,
         [Description("+/- 2 Days")]
-        TwoDays = 0,
+        TwoDays = 1,
         [Description("+/- 3 Days")]
         ThreeDays = 2,
     }

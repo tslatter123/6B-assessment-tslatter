@@ -22,7 +22,7 @@ namespace SixBAssessmentTSlatter.Client.Services
             Booking newBooking = _bookingMapper.Map(viewModel);
             HttpClient client = _clientFactory.CreateClient("public");
 
-            var result = await client.PostAsJsonAsync<Booking>("api/AddBooking", newBooking);
+            var result = await client.PostAsJsonAsync("api/AddBooking", newBooking);
 
             if (!result.IsSuccessStatusCode)
             {
