@@ -6,9 +6,10 @@ using SixBAssessmentTSlatter.Shared.Models;
 
 namespace SixBAssessmentTSlatter.Server.Controllers
 {
-    public class BookingsController
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BookingsController : ControllerBase
     {
-
         private readonly ApplicationDbContext _context;
 
         public BookingsController(ApplicationDbContext context)

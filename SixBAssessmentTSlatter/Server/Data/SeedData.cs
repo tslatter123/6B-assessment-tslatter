@@ -14,7 +14,7 @@ namespace BlazorPracticeApp.Server.Data
 
         public async Task RunSeed()
         {
-            if (await _userManager.FindByEmailAsync("test@test.tst") == null)
+            if (await _userManager.FindByEmailAsync("user@6b.tst") == null)
             {
                 ApplicationUser user = new ApplicationUser
                 {

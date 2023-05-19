@@ -7,6 +7,8 @@ using SixBAssessmentTSlatter.Client.Interfaces.Mappers;
 using SixBAssessmentTSlatter.Client.Mappers;
 using SixBAssessmentTSlatter.Client.Services;
 using SixBAssessmentTSlatter.Shared.Enums;
+using BlazorPracticeApp.Shared.Interfaces.Mappers;
+using BlazorPracticeApp.Shared.Mappers;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -14,7 +16,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddHttpClient("public", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
-builder.Services.AddHttpClient("public", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+builder.Services.AddHttpClient("private", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
 builder.Services.AddSingleton<IBookingService, BookingService>();
@@ -22,6 +24,7 @@ builder.Services.AddSingleton<IEnumService<DayFlexibilityEnum>, EnumService<DayF
 builder.Services.AddSingleton<IEnumService<VehicleSizeEnum>, EnumService<VehicleSizeEnum>>();
 
 builder.Services.AddSingleton<IBookingMapper, BookingMapper>();
+builder.Services.AddSingleton<IBookingViewModelMapper, BookingViewModelMapper>();
 
 // Supply HttpClient instances that include access tokens when making requests to the server project
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("SixBAssessmentTSlatter.ServerAPI"));
