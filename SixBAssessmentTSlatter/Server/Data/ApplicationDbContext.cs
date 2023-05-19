@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SixBAssessmentTSlatter.Server.Models;
+using SixBAssessmentTSlatter.Shared.Models;
 
 namespace SixBAssessmentTSlatter.Server.Data
 {
@@ -13,5 +14,7 @@ namespace SixBAssessmentTSlatter.Server.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        public DbSet<Booking> Bookings { get; set; }
     }
 }
