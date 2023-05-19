@@ -14,8 +14,8 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddHttpClient("public", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
-//builder.Services.AddHttpClient("SixBAssessmentTSlatter.ServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
-//    .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+builder.Services.AddHttpClient("public", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+    .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
 builder.Services.AddSingleton<IBookingService, BookingService>();
 builder.Services.AddSingleton<IEnumService<DayFlexibilityEnum>, EnumService<DayFlexibilityEnum>>();
